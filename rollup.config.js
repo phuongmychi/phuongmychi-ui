@@ -1,29 +1,45 @@
 /* eslint-disable import/no-anonymous-default-export */
-import resolve from "@rollup/plugin-node-resolve";
 import babel from "rollup-plugin-babel";
-import typescript from "rollup-plugin-typescript2";
+import resolve from "@rollup/plugin-node-resolve";
+import external from "rollup-plugin-peer-deps-external";
+import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
+import typescript from "rollup-plugin-typescript2";
+import commonjs from "rollup-plugin-commonjs";
+import react from "react";
+import reactDom from "react-dom";
 
-const packageJson = require("./package.json");
+export default [
+  {
+    input: "./src/index.tsx",
+    output: [
+      {
+        file: "dist/index.js",
+        format: "cjs",
+      },
+      {
+        file: "dist/index.es.js",
+        format: "es",
+        exports: "named",
+      },
+    ],
+    plugins: [
+      postcss({
+        plugins: [],
+        minimize: true,
+      }),
+      commonjs({
+        namedExports: {
+          react: Object.keys(react),
+          "react-dom": Object.keys(reactDom),
+        },
+      }),
 
-export default {
-  input: "src/index.tsx",
-  output: {
-    file: packageJson.module,
-    format: "esm",
+      typescript({ useTsconfigDeclarationDir: true }),
+      external(),
+      resolve(),
+      terser(),
+    ],
+    external: [/node_modules/],
   },
-  plugins: [
-    resolve(),
-    babel({
-      runtimeHelpers: true,
-      presets: ["@babel/preset-react"],
-    }),
-    typescript({ useTsconfigDeclarationDir: true }),
-    postcss(),
-    nodeResolve({
-      extensions: [".css"],
-    }),
-  ],
-  external: [/node_modules/],
-};
+];

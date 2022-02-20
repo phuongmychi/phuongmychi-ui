@@ -30,7 +30,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
         <a href="#">
           <i className="fa fa-linkedin"></i>
         </a>
-        <a href="#">
+        <a href={facebook}>
           <i className="fa fa-facebook"></i>
         </a>
       </div>
