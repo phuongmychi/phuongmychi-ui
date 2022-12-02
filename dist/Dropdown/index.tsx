@@ -1,6 +1,6 @@
 import "./Dropdown.scss";
 
-interface DropdownProps {}
+export type DropdownProps = {}
 
 const Dropdown: React.FC<DropdownProps> = () => {
     return (

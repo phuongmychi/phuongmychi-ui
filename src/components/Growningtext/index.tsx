@@ -1,6 +1,6 @@
 import "./Growingtext.scss";
 
-interface GrowingtextPrReactprops {
+export type GrowingtextPrReactprops = {
   text: string;
 }
 
