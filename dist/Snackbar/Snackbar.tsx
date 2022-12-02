@@ -1,6 +1,6 @@
 import "./Snackbar.scss";
 
-interface SnackbarProps {
+export type SnackbarProps = {
   text: string;
   buttontext: string;
 }

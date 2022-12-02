@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC } from "react";
 import "./ProfileCard.scss";
-interface ProfileCardProps {
+export type ProfileCardProps = {
   name: string;
   imgurl: string;
   jobtile: string;

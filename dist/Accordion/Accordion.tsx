@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import "./Accordion.scss";
-interface AccordionProps {
+export type AccordionProps = {
   text: any;
   isOpen: boolean;
   textheader: string;
