@@ -1,12 +1,12 @@
 {
   "name": "phuongmychi-ui",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": false,
   "description": "phuongmychi -ui",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [ "index.ts", "README.md" ],
+  "files": [ "dist", "README.md" ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
